@@ -5,12 +5,20 @@ import router from "../routes/FeedbackRoutes.js";
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 3000 || process.env.PORT;
 
 app.use(express.json());
+app.get("/", (req, res)=>{
+  res.json({
+    success: true,
+    message: "Server Running Successfully"
+  })
+})
 
 //mounting api routes
 app.use("/api/v1",router)
+
+
 
 dotenv.config();
 
